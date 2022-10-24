@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Movies show page' do
   before :each do
     VCR.use_cassette('example_movie') do
-      @user = User.create!(name: 'John', email: 'john@user.com')
+      @user = User.create!(name: 'John', email: 'john@user.com', password: 'password', password_confirmation: 'password')
       @movie = MoviesFacade.movie_details(238)
     end
   end

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Users dashboard' do
   describe 'when a user visits their dashboard' do
     it "displays user's name, button to discover movies, and a section to list viewing parties" do
-      user = User.create!(name: 'John', email: 'john@user.com')
-      user_2 = User.create!(name: 'Rick', email: 'rick@user.com')
+      user = User.create!(name: 'John', email: 'john@user.com', password: 'password', password_confirmation: 'password')
+      user_2 = User.create!(name: 'Rick', email: 'rick@user.com', password: 'password', password_confirmation: 'password')
       # When I visit '/users/:id' where :id is a valid user id,
       visit user_path(user)
       # I should see:
@@ -21,8 +21,8 @@ RSpec.describe 'Users dashboard' do
     end
 
     it "will redirect to a movie discover page involving the user's id of the dashboard it came from" do
-      user = User.create!(name: 'John', email: 'john@user.com')
-      user_2 = User.create!(name: 'Rick', email: 'rick@user.com')
+      user = User.create!(name: 'John', email: 'john@user.com', password: 'password', password_confirmation: 'password')
+      user_2 = User.create!(name: 'Rick', email: 'rick@user.com', password: 'password', password_confirmation: 'password')
       # As a user,
       # When I go to a user dashbaord,
       visit user_path(user)

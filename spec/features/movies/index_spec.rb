@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Movie Index' do
   before(:each) do
-    @user = User.create!(name: 'John', email: 'john@user.com')
+    @user = User.create!(name: 'John', email: 'john@user.com', password: 'password', password_confirmation: 'password')
   end
 
   describe 'Top Rated Movies' do
