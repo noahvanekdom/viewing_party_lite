@@ -19,9 +19,12 @@ RSpec.describe 'User Registration' do
       before(:each) do
         fill_in 'Name', with: 'Jon Duttko'
         fill_in 'Email', with: 'jduttko149@gmail.com'
+        fill_in 'Password', with: 'test'
+        fill_in 'Password Confirmation', with: 'test'
       end
       it 'I am taken to the dashboard page for that user' do
         click_button 'Submit'
+
         expect(current_path).to eq(user_path(User.last))
       end
     end
@@ -42,7 +45,7 @@ RSpec.describe 'User Registration' do
 
     describe 'when I add a non-unique email and click submit' do
       before(:each) do
-        User.create!(name: 'Matt Duttko', email: 'jduttko149@gmail.com')
+        User.create!(name: 'Matt Duttko', email: 'jduttko149@gmail.com', password: 'test')
         fill_in 'Name', with: 'Jon Duttko'
         fill_in 'Email', with: 'jduttko149@gmail.com'
       end
