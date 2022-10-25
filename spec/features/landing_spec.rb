@@ -16,7 +16,7 @@ RSpec.describe 'Landing Page' do
 
   describe 'logging in' do
     it "can log in with valid credentials" do
-      user = User.create(name: "funbucket", email: 'funbucket13@gmail.com', password: "test", password_confirmation: "test")
+      user = User.create(name: "funbucket", email: 'funbucket13@gmail.com', password: "password", password_confirmation: "password")
 
       visit root_path
 
@@ -30,14 +30,16 @@ RSpec.describe 'Landing Page' do
       fill_in :password_confirmation, with: user.password
 
       click_on "Log In"
+      save_and_open_page
 
-      expect(current_path).to eq(user_discover_path(user))
+      expect(current_path).to eq(user_path(user))
+
 
       expect(page).to have_content("Welcome, #{user.name}")
     end
 
     it "cannot log in with bad credentials" do
-      user = User.create(name: "funbucket", email: "funbucket13@gmail.com", password: "test", password_confirmation: "test")
+      user = User.create(name: "funbucket", email: "funbucket13@gmail.com", password: "password", password_confirmation: "password")
 
       # we don't have to go through root_path and click the "I have an account" link any more
       visit login_path

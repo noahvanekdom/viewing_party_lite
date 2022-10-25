@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Movie Index' do
   before(:each) do
     @user = User.create!(name: 'John', email: 'john@user.com', password: 'password', password_confirmation: 'password')
+    log_in(@user)
   end
 
   describe 'Top Rated Movies' do
     before(:each) do
-      visit user_discover_path(@user)
+      visit discover_users_path
     end
 
     it 'should have a link to return to user movie discover page', :vcr do

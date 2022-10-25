@@ -11,7 +11,7 @@ RSpec.describe "User registration form" do
     expect(current_path).to eq(new_user_path)
 
     name = "funbucket13"
-    password = "test"
+    password = "password"
 
     fill_in :user_name, with: name
 
@@ -27,7 +27,7 @@ RSpec.describe "User registration form" do
   it "will not create a new user with mismatching passwords" do
     visit new_user_path
     name = "funbucket13"
-    password = "test"
+    password = "password"
 
     fill_in :user_name, with: name
 
