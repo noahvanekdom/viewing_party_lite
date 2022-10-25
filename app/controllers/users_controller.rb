@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :current_user, :log_in(@user), only: [:show, :discover]
+  before_action :current_user, :logged_in_user,  only: [:show, :discover]
 
   def show
     @user = User.find(session[:user_id])
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   # end
 
   def discover
-    @user = User.find(params[:user_id])
+    @user = User.find(session[:user_id])
   end
 
   def new
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       flash[:success] = "Welcome #{@user.name}!"
-      redirect_to(users_path(@user))
+      redirect_to(users_path)
     else
       redirect_to(new_user_path)
       flash[:failure] = @user.errors.full_messages.first

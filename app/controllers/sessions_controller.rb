@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
       log_in(user)
-      redirect_to(users_path(user))
+      redirect_to(users_path)
     else
       flash[:failure] = 'Invalid email/password combination'
       redirect_to(login_path)

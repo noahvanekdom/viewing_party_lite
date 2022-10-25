@@ -22,5 +22,5 @@ Rails.application.routes.draw do
 
   # post '/login', to: 'users#login_user'
 
-  # get '/register', to: 'users#new'
+  get '/register', to: 'users#new'
 end

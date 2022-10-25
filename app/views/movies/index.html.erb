@@ -2,7 +2,7 @@
 <p><%= link_to "Return to Discover", discover_users_path %></p>
 
 <ol><% @movies.each do |movie| %>
-  <li><%= link_to movie.title, user_movie_path(@user, id: movie.id) %> -- <%= "Average Rating #{movie.vote_average}"%></li>
+  <li><%= link_to movie.title, users_movie_path(id: movie.id) %> -- <%= "Average Rating #{movie.vote_average}"%></li>
 <% end %></ol>
 
 

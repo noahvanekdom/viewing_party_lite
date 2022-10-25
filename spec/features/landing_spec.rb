@@ -24,15 +24,11 @@ RSpec.describe 'Landing Page' do
 
       expect(current_path).to eq(login_path)
 
-      fill_in :name, with: user.name
       fill_in :email, with: user.email
       fill_in :password, with: user.password
-      fill_in :password_confirmation, with: user.password
 
       click_on "Log In"
-      save_and_open_page
-
-      expect(current_path).to eq(user_path(user))
+      expect(current_path).to eq(users_path)
 
 
       expect(page).to have_content("Welcome, #{user.name}")
@@ -44,7 +40,6 @@ RSpec.describe 'Landing Page' do
       # we don't have to go through root_path and click the "I have an account" link any more
       visit login_path
 
-      fill_in :name, with: user.name
       fill_in :email, with: user.email
 
       fill_in :password, with: "incorrect password"
